@@ -3,18 +3,18 @@ import "../styles/planos.css";
 const plans = [
   {
     name: "Básico",
-    price: "R$ 29",
+    price: "R$ 29,00",
     features: ["Acesso ao conteúdo básico", "Suporte por e-mail"]
   },
   {
     name: "Pro",
-    price: "R$ 59",
-    features: ["Tudo do básico", "Aulas completas", "Suporte prioritário"]
+    price: "R$ 59,00",
+    features: ["Tudo do básico", "Aulas exclusivas", "Certificado"]
   },
   {
     name: "Premium",
-    price: "R$ 99",
-    features: ["Tudo incluso", "Suporte 24h", "Certificado"]
+    price: "R$ 99,00",
+    features: ["Suporte 24h", "Mentoria personalizada", "Webinars mensais"]
   }
 ];
 
@@ -38,7 +38,11 @@ export default function Planos() {
               ))}
             </ul>
 
-            <button>Assinar</button>
+              <button className="btn  btn-primary">
+                <a href="#contato">
+                  Assinar
+                </a>
+              </button>
           </div>
         ))}
       </div>

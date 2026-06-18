@@ -1,5 +1,4 @@
 import "../styles/hero.css";
-import logo from "../assets/images/logo.svg"
 import heroImage from "../assets/images/heroImage.jpg"
 import Button from "./Button";
 
@@ -12,12 +11,6 @@ export default function Hero() {
         {/* Conteúdo */}
 
         <div className="hero__content">
-
-          <img
-            src={logo}
-            alt="Lengua Viva"
-            className="hero__logo"
-          />
 
           <span className="hero__badge">
             Espanhol que conecta

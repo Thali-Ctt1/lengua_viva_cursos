@@ -1,34 +1,39 @@
-
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  padding: 14px 28px;
+  padding: 14px 30px;
 
   border-radius: 999px;
 
   font-size: 16px;
   font-weight: 600;
 
-  transition: 0.3s ease;
+  text-decoration: none;
+
+  transition: all 0.3s ease;
 
   cursor: pointer;
+
+  gap: 8px;
 }
 
 .btn-primary {
   background: #d3132a;
   color: white;
+
+  box-shadow: 0 6px 18px rgba(211, 19, 42, 0.25);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
+  transform: translateY(-3px);
+
+  box-shadow: 0 10px 24px rgba(211, 19, 42, 0.35);
 }
 
-
 .btn-secondary {
-  border: 1px solid #d3132a;
+  border: 2px solid #d3132a;
   color: #d3132a;
   background: transparent;
 }
@@ -36,4 +41,10 @@
 .btn-secondary:hover {
   background: #d3132a;
   color: white;
+
+  transform: translateY(-3px);
+}
+
+.btn:active {
+  transform: scale(0.98);
 }
