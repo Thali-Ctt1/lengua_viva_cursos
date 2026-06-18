@@ -1,0 +1,35 @@
+.card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 24px;
+  transition: 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.card-icon img {
+  width: 48px;
+  height: 48px;
+}
+
+.card h3 {
+  font-size: 24px;
+  color: #d3132a;
+  margin-bottom: 16px;
+}
+
+.card p {
+  color: #555;
+  line-height: 1.6;
+}

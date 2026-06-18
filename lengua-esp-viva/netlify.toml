@@ -1,0 +1,12 @@
+# exemplo deu um netlify.toml
+[build]
+  base = "segundobi/dona-frost"
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+# Redirecionamento de todas as rotas para /index.html
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200

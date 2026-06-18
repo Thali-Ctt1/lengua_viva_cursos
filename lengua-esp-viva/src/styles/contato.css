@@ -1,0 +1,41 @@
+.contato {
+  padding: 100px 20px;
+  background: #f8f8f8;
+}
+
+.contato .container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.contato h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.contato form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contato input,
+.contato textarea {
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.contato button {
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #6f42c1;
+  color: white;
+  font-weight: bold;
+}
+
+.contato button:hover {
+  opacity: 0.9;
+}
