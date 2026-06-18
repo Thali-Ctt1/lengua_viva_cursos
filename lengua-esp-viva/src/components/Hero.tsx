@@ -8,7 +8,7 @@ export default function Hero() {
 
       <div className="hero__container">
 
-        {/* Conteúdo */}
+        {/* Conteúdo do Hero */}
 
         <div className="hero__content">
 
