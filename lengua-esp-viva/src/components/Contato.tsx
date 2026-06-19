@@ -5,7 +5,7 @@ export function Contato() {
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
-    mensagem: "",
+    mensagem: "", // Mantemos 'mensagem' aqui para o controle do input do HTML
   });
 
   const handleChange = (
@@ -21,23 +21,32 @@ export function Contato() {
     e.preventDefault();
 
     try {
-      const response = await fetch("/.netlify/functions/sendEmail", {
+      // 1. Usamos a rota simplificada (/api/) graças ao redirecionamento do netlify.toml
+      const response = await fetch("/api/sendEmail", {
         method: "POST",
-        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json", // Essencial para o backend entender o JSON!
+        },
+        // 2. Mapeamos 'mensagem' do front para 'message' que o backend exige
+        body: JSON.stringify({
+          email: formData.email,
+          message: `Nome: ${formData.nome}\n\nMensagem:\n${formData.mensagem}` 
+        }),
       });
 
       if (response.ok) {
-        alert("Mensagem enviada com sucesso!");
+        alert("Mensagem enviada com sucesso! 🎉");
         setFormData({
           nome: "",
           email: "",
           mensagem: "",
         });
       } else {
-        alert("Erro ao enviar mensagem.");
+        const errorData = await response.json();
+        alert(`Erro ao enviar: ${errorData.error || "Tente novamente."}`);
       }
     } catch {
-      alert("Erro ao enviar mensagem.");
+      alert("Erro ao conectar com o servidor.");
     }
   };
 

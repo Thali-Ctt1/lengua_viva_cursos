@@ -1,11 +1,12 @@
-# exemplo deu um netlify.toml
 [build]
   base = "lengua-esp-viva"
   command = "npm run build"
   publish = "dist"
-  functions = "netlify/functions"
 
-# Redirecionamento de todas as rotas para /index.html
+[functions]
+  directory = "netlify/functions"
+
+# Redirecionamento de todas as rotas da API para as Serverless Functions
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"

@@ -1,55 +1,114 @@
-import { Handler } from "@netlify/functions";
+import type { Handler, HandlerEvent } from "@netlify/functions";
 import nodemailer from "nodemailer";
 
-export const handler: Handler = async (event) => {
+interface ContactPayload {
+  email: string;
+  message: string;
+}
+
+const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN ?? "";
+
+const corsHeaders = (origin: string) => ({
+  "Access-Control-Allow-Origin": ALLOWED_ORIGIN || origin,
+  "Access-Control-Allow-Headers": "Content-Type",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+});
+
+const handler: Handler = async (event: HandlerEvent) => {
+  const origin = event.headers["origin"] ?? "";
+
+  // 1. Trata requisições OPTIONS (CORS Preflight)
+  if (event.httpMethod === "OPTIONS") {
+    return {
+      statusCode: 204,
+      headers: corsHeaders(origin),
+      body: "",
+    };
+  }
+
+  // 2. Bloqueia métodos que não sejam POST
+  if (event.httpMethod !== "POST") {
+    return {
+      statusCode: 405,
+      headers: corsHeaders(origin),
+      body: JSON.stringify({ error: "Método não permitido." }),
+    };
+  }
+
+  let payload: ContactPayload;
+
+  // 3. Tenta parsear o JSON do body
   try {
-    if (!event.body) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({
-          message: "Dados não enviados.",
-        }),
-      };
-    }
+    payload = JSON.parse(event.body ?? "{}");
+  } catch {
+    return {
+      statusCode: 400,
+      headers: corsHeaders(origin),
+      body: JSON.stringify({ error: "Body inválido." }),
+    };
+  }
 
-    const { nome, email, mensagem } = JSON.parse(event.body);
+  const { email, message } = payload;
 
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
+  // 4. Valida se os campos estão vazios
+  if (!email?.trim() || !message?.trim()) {
+    return {
+      statusCode: 422,
+      headers: corsHeaders(origin),
+      body: JSON.stringify({ error: "Campos obrigatórios: email, message." }),
+    };
+  }
 
+  // 5. Valida o formato do e-mail
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return {
+      statusCode: 422,
+      headers: corsHeaders(origin),
+      body: JSON.stringify({ error: "E-mail inválido." }),
+    };
+  }
+
+  // 6. Configura o transportador do SMTP (Atualizado com fallbacks e conversão explícita)
+  const transporter = nodemailer.createTransport({
+    host: String(process.env.SMTP_HOST ?? 'smtp.gmail.com'),
+    port: Number(process.env.SMTP_PORT ?? 587),
+    secure: process.env.SMTP_SECURE === "true",
+    auth: {
+      user: String(process.env.SMTP_USER ?? ''),
+      pass: String(process.env.SMTP_PASS ?? ''),
+    },
+  });
+
+  // 7. Envia o e-mail de fato
+  try {
     await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
-      subject: `Novo contato de ${nome}`,
+      from: `<${process.env.SMTP_USER}>`,
+      replyTo: email,
+      to: process.env.CONTACT_EMAIL,
+      subject: "[Lenguaviva Cursos] Nova mensagem Landing Page",
+      text: message,
       html: `
-        <h2>Novo contato Lengua Viva!</h2>
-
-        <p><strong>Nome:</strong> ${nome}</p>
+        <h2>Nova mensagem de contato</h2>
         <p><strong>E-mail:</strong> ${email}</p>
         <p><strong>Mensagem:</strong></p>
-        <p>${mensagem}</p>
+        <p>${message.replace(/\n/g, "<br>")}</p>
       `,
     });
 
     return {
       statusCode: 200,
-      body: JSON.stringify({
-        message: "E-mail enviado com sucesso!",
-      }),
+      headers: corsHeaders(origin),
+      body: JSON.stringify({ message: "E-mail enviado com sucesso." }),
     };
   } catch (error) {
-    console.error(error);
-
+    console.error("Erro ao enviar e-mail:", error);
     return {
       statusCode: 500,
-      body: JSON.stringify({
-        message: "Erro ao enviar e-mail.",
-      }),
+      headers: corsHeaders(origin),
+      body: JSON.stringify({ error: "Falha ao enviar o e-mail. Tente novamente mais tarde." }),
     };
   }
 };
+
+export { handler };
