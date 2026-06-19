@@ -1,34 +1,46 @@
 import "../styles/solutions.css";
 import Card from "./Card";
-import book from "../assets/icons/icon_book.svg";
-import chat from "../assets/icons/icon_chat.svg";
-import business from "../assets/icons/icon_business.svg";
+
+  import basico from "../assets/icons/icon_book.svg";
+  import conversacao from "../assets/icons/icon_business.svg";
+  import avancado from "../assets/icons/icon_chat.svg";
 
 export default function Solutions() {
   return (
-    <section className="solutions" id="cursos">
-      <div className="solutions-container">
-        <h2>Escolha seu caminho no espanhol</h2>
+    <section id="solucoes" className="solutions">
+      <div className="container">
+
+        <span className="section-tag">Soluções</span>
+
+        <h2>Como podemos ajudar você</h2>
+
+        <p className="section-description">
+          Soluções personalizadas para aprender espanhol de forma prática,
+          dinâmica e adaptada aos seus objetivos.
+        </p>
 
         <div className="solutions-grid">
+
           <Card
-            icon={book}
-            title="Espanhol Básico"
-            description="Aprenda espanhol do zero de forma prática."
+            icon={basico}
+            title="Aulas Particulares"
+            description="Aulas individuais focadas nas suas necessidades e ritmo de aprendizagem."
           />
 
           <Card
-            icon={chat}
+            icon={conversacao}
             title="Conversação"
-            description="Desenvolva confiança para conversar."
+            description="Desenvolva fluência e confiança para situações reais do dia a dia."
           />
 
           <Card
-            icon={business}
-            title="Espanhol para negócios"
-            description="Espanhol voltado para o ambiente profissional."
+            icon={avancado}
+            title="Preparação Específica"
+            description="Espanhol para viagens, trabalho, intercâmbio e objetivos profissionais."
           />
+
         </div>
+
       </div>
     </section>
   );

@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <header className="header">
       <div className="logo">
-        <img src={logo} alt="logo lengua viva" />
+        <img src={logo} alt="Logo Lengua Viva" />
       </div>
 
       <button
@@ -21,7 +21,8 @@ export default function Header() {
       <nav className={`nav ${menuOpen ? "active" : ""}`}>
         <a href="#inicio" onClick={() => setMenuOpen(false)}>Início</a>
         <a href="#sobre" onClick={() => setMenuOpen(false)}>Sobre</a>
-        <a href="#cursos" onClick={() => setMenuOpen(false)}>Cursos</a>
+        <a href="#solucoes" onClick={() => setMenuOpen(false)}>Cursos</a>
+        <a href="#depoimentos" onClick={() => setMenuOpen(false)}>Depoimentos</a> 
         <a href="#planos" onClick={() => setMenuOpen(false)}>Planos</a>
         <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
         <a href="#contato" onClick={() => setMenuOpen(false)}>Contato</a>

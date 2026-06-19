@@ -1,4 +1,5 @@
 import "../styles/testemunhos.css";
+import TestimonialCard from "./TestimonialCard";
 
 interface Testemunhos {
   id: number;
@@ -6,6 +7,7 @@ interface Testemunhos {
   cargo: string;
   foto: string;
   depoimento: string;
+  estrelas: number;
 }
 
 const testemunhos: Testemunhos[] = [
@@ -14,6 +16,7 @@ const testemunhos: Testemunhos[] = [
     nome: "Maria Silva",
     cargo: "Curso Básico",
     foto: "https://i.pravatar.cc/150?img=5",
+    estrelas: 5,
     depoimento:
       "Em poucos meses consegui fazer minhas primeiras conversas em espanhol e perdi o medo de falar.",
   },
@@ -22,6 +25,7 @@ const testemunhos: Testemunhos[] = [
     nome: "Lucas Ferreira",
     cargo: "Conversação",
     foto: "https://i.pravatar.cc/150?img=11",
+    estrelas: 5,
     depoimento:
       "As aulas são muito práticas e hoje consigo entender séries e conversar com nativos.",
   },
@@ -30,12 +34,13 @@ const testemunhos: Testemunhos[] = [
     nome: "Ana Souza",
     cargo: "Espanhol para Negócios",
     foto: "https://i.pravatar.cc/150?img=9",
+    estrelas: 4,
     depoimento:
       "O curso me ajudou a conseguir uma promoção no trabalho e participar de reuniões internacionais.",
   },
 ];
 
-export default function Testimonials() {
+export default function Testemunho() {
   return (
     <section className="testemunhos" id="depoimentos">
       <div className="testemunhos-container">
@@ -52,18 +57,14 @@ export default function Testimonials() {
 
         <div className="testemunhos-grid">
           {testemunhos.map((item) => (
-            <div className="testemunho-card" key={item.id}>
-              <img src={item.foto} alt={item.nome} />
-
-              <span className="stars">
-                ⭐⭐⭐⭐⭐
-              </span>
-
-              <p>{item.depoimento}</p>
-
-              <h4>{item.nome}</h4>
-              <span>{item.cargo}</span>
-            </div>
+            <TestimonialCard
+              key={item.id}
+              nome={item.nome}
+              cargo={item.cargo}
+              foto={item.foto}
+              depoimento={item.depoimento}
+              estrelas={item.estrelas}
+            />
           ))}
         </div>
       </div>

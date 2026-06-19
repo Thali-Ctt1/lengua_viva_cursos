@@ -1,20 +1,50 @@
 import "../styles/about.css";
+import aboutImage from "../assets/images/about-bg.jpg";
 
 export default function About() {
   return (
-    <section id="sobre" className="about">
-      <div className="container">
-        <h2>Sobre a Lengua Viva</h2>
+    <section
+      id="sobre"
+      className="about"
+      style={{
+        backgroundImage: `url(${aboutImage})`,
+      }}
+    >
+      <div className="about-overlay">
+
+        <span className="about-tag">
+          Sobre Nós
+        </span>
+
+        <h2>
+          Aprender espanhol é abrir portas para novas experiências
+        </h2>
 
         <p>
-          A Lengua Viva nasceu para tornar o aprendizado do espanhol
-          mais simples, prático e conectado às situações reais do dia a dia.
+          Na Lengua Viva, acreditamos que aprender um idioma vai muito
+          além da gramática. Nosso objetivo é conectar pessoas a novas
+          culturas, oportunidades e histórias através do espanhol.
         </p>
 
-        <p>
-          Aqui você aprende conversação, gramática e vocabulário
-          através de uma metodologia dinâmica e personalizada.
-        </p>
+        <div className="about-stats">
+
+          <div className="stat">
+            <h3>50+</h3>
+            <span>Alunos</span>
+          </div>
+
+          <div className="stat">
+            <h3>500+</h3>
+            <span>Horas de aula</span>
+          </div>
+
+          <div className="stat">
+            <h3>100%</h3>
+            <span>Personalizado</span>
+          </div>
+
+        </div>
+
       </div>
     </section>
   );

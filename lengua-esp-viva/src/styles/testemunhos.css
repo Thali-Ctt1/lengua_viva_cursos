@@ -43,60 +43,11 @@
   gap: 30px;
 }
 
-.testemunho-card {
-  background: white;
-  padding: 40px 35px;
-  border-radius: 24px;
-  text-align: center;
-  transition: 0.3s ease;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-}
-
-.testemunho-card:hover {
-  transform: translateY(-10px);
-}
-
-.testemunho-card img {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 25px;
-}
-
-.stars {
-  display: block;
-  font-size: 22px;
-  margin-bottom: 20px;
-}
-
-.testemunho-card p {
-  color: #555;
-  line-height: 1.7;
-  margin-bottom: 25px;
-}
-
-.testemunho-card h4 {
-  color: #111827;
-  font-size: 20px;
-  margin-bottom: 6px;
-}
-
-.testemunho-card span {
-  color: #6b7280;
-  font-size: 14px;
-}
-
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .testemunhos-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-}
 
-@media (max-width: 768px) {
-  .testemunhos {
-    padding: 80px 20px;
-  }
 
   .testemunhos h2 {
     font-size: 32px;

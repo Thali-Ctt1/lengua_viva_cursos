@@ -36,7 +36,7 @@ export default function Hero() {
             />
 
             <Button
-              text="Fale comigo"
+              text="Fale conosco"
               link="#contato"
               variant="secondary"
             />
