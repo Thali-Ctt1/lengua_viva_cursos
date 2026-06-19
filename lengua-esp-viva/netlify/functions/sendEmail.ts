@@ -17,7 +17,7 @@ const corsHeaders = (origin: string) => ({
 const handler: Handler = async (event: HandlerEvent) => {
   const origin = event.headers["origin"] ?? "";
 
-  // 1. Trata requisições OPTIONS (CORS Preflight)
+  //Trata requisições OPTIONS (CORS Preflight)
   if (event.httpMethod === "OPTIONS") {
     return {
       statusCode: 204,
@@ -26,7 +26,7 @@ const handler: Handler = async (event: HandlerEvent) => {
     };
   }
 
-  // 2. Bloqueia métodos que não sejam POST
+  //Bloqueia métodos que não sejam POST
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
@@ -37,7 +37,7 @@ const handler: Handler = async (event: HandlerEvent) => {
 
   let payload: ContactPayload;
 
-  // 3. Tenta parsear o JSON do body
+  //Tenta parsear o JSON do body
   try {
     payload = JSON.parse(event.body ?? "{}");
   } catch {
@@ -50,7 +50,7 @@ const handler: Handler = async (event: HandlerEvent) => {
 
   const { email, message } = payload;
 
-  // 4. Valida se os campos estão vazios
+  //Valida se os campos estão vazios
   if (!email?.trim() || !message?.trim()) {
     return {
       statusCode: 422,
@@ -59,7 +59,7 @@ const handler: Handler = async (event: HandlerEvent) => {
     };
   }
 
-  // 5. Valida o formato do e-mail
+  //Valida o formato do e-mail
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     return {
@@ -69,7 +69,7 @@ const handler: Handler = async (event: HandlerEvent) => {
     };
   }
 
-  // 6. Configura o transportador do SMTP (Atualizado com fallbacks e conversão explícita)
+  //Configura o transportador do SMTP
   const transporter = nodemailer.createTransport({
     host: String(process.env.SMTP_HOST ?? 'smtp.gmail.com'),
     port: Number(process.env.SMTP_PORT ?? 587),
@@ -80,7 +80,7 @@ const handler: Handler = async (event: HandlerEvent) => {
     },
   });
 
-  // 7. Envia o e-mail de fato
+  //Envia o e-mail de fato
   try {
     await transporter.sendMail({
       from: `<${process.env.SMTP_USER}>`,
