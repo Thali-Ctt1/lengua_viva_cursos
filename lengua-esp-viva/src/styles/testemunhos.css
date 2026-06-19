@@ -44,20 +44,33 @@
 }
 
 @media (max-width: 768px) {
-  .testemunhos-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .testemunhos {
+    padding: 80px 5px;
   }
-
 
   .testemunhos h2 {
     font-size: 32px;
   }
 
   .testemunhos-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    padding-bottom: 10px;
+  }
+
+  .testemunhos-grid::-webkit-scrollbar {
+    display: none;
   }
 
   .testemunho-card {
-    padding: 35px 25px;
+    width: 70%;
+    flex-shrink: 0;
+
+    scroll-snap-align: center;
   }
 }
