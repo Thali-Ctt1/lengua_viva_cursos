@@ -90,7 +90,7 @@ const handler: Handler = async (event: HandlerEvent) => {
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #eee; padding: 20px; border-radius: 8px;">
           
-          <h2 style="color: #d97706; margin-top: 0;">¡Hola! Obrigado por entrar em contato.</h2>
+          <h2 style="color: #BF121F; margin-top: 0;">¡Hola! Obrigado por entrar em contato.</h2>
           <p>Esta é uma confirmação de que recebemos a sua mensagem com sucesso em nossa plataforma <b>Lengua Viva Cursos</b>.</p>
           <p>Nossa equipe já está analisando o seu contato e responderemos o mais breve possível no e-mail fornecido.</p>
           
@@ -100,7 +100,7 @@ const handler: Handler = async (event: HandlerEvent) => {
           <h3 style="color: #555;">Cópia dos dados enviados:</h3>
           <p><strong>E-mail de contato:</strong> ${email}</p>
           <p><strong>Mensagem:</strong></p>
-          <div style="background-color: #f9f9f9; padding: 15px; border-left: 4px solid #d97706; border-radius: 4px; font-style: italic;">
+          <div style="background-color: #f9f9f9; padding: 15px; border-left: 4px solid #BF121F; border-radius: 4px; font-style: italic;">
             ${message.replace(/\n/g, "<br>")}
           </div>
           
