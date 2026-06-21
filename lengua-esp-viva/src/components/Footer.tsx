@@ -28,7 +28,7 @@ export default function Footer() {
 
           <a href="#inicio">Início</a>
 
-          <a href="#cursos">Cursos</a>
+          <a href="#solucoes">Cursos</a>
 
           <a href="#sobre">Sobre</a>
 
@@ -40,15 +40,15 @@ export default function Footer() {
 
           <h4>Contato</h4>
 
-          <a href="#">
+          <a href="#contato">
             Instagram
           </a>
 
-          <a href="#">
+          <a href="#contato">
             WhatsApp
           </a>
 
-          <a href="#">
+          <a href="#contato">
             Email
           </a>
 

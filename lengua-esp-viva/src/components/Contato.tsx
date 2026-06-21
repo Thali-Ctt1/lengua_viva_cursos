@@ -5,7 +5,7 @@ export function Contato() {
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
-    mensagem: "", // Mantemos 'mensagem' aqui para o controle do input do HTML
+    mensagem: "", 
   });
 
   const handleChange = (
@@ -21,13 +21,12 @@ export function Contato() {
     e.preventDefault();
 
     try {
-      // 1. Usamos a rota simplificada (/api/) graças ao redirecionamento do netlify.toml
       const response = await fetch("/api/sendEmail", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json", // Essencial para o backend entender o JSON!
+          "Content-Type": "application/json", 
         },
-        // 2. Mapeamos 'mensagem' do front para 'message' que o backend exige
+        
         body: JSON.stringify({
           email: formData.email,
           message: `Nome: ${formData.nome}\n\nMensagem:\n${formData.mensagem}` 

@@ -31,7 +31,7 @@ export default function Hero() {
 
             <Button
               text="Conheça os cursos"
-              link="#cursos"
+              link="#solucoes"
               variant="primary"
             />
 
@@ -45,7 +45,7 @@ export default function Hero() {
 
         </div>
 
-        {/* Imagem */}
+        {/* Imagem do Hero */}
 
         <div className="hero__image-wrapper">
 

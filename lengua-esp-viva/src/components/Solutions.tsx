@@ -1,9 +1,10 @@
 import "../styles/solutions.css";
 import Card from "./Card";
 
-  import basico from "../assets/icons/icon_book.svg";
-  import conversacao from "../assets/icons/icon_business.svg";
-  import avancado from "../assets/icons/icon_chat.svg";
+import basico from "../assets/icons/icon_book.svg";
+import aviao from "../assets/icons/icon_business.svg";
+import conversacao from "../assets/icons/icon_chat.svg";
+
 
 export default function Solutions() {
   return (
@@ -28,13 +29,13 @@ export default function Solutions() {
           />
 
           <Card
-            icon={conversacao}
+            icon={aviao}
             title="Conversação"
             description="Desenvolva fluência e confiança para situações reais do dia a dia."
           />
 
           <Card
-            icon={avancado}
+            icon={conversacao}
             title="Preparação Específica"
             description="Espanhol para viagens, trabalho, intercâmbio e objetivos profissionais."
           />

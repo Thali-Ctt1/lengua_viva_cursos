@@ -1,12 +1,12 @@
 .planos {
-  padding: 80px 20px;
+  padding: 100px 20px;
   text-align: center;
-  background: #f8f9fc;
+  background: #FFF8F0;
 }
 
 .planos h2 {
   font-size: 2.2rem;
-  margin-bottom: 50px;
+  margin-bottom: 80px;
   color: #111827;
 }
 
@@ -19,18 +19,18 @@
 }
 
 .plano-card {
-  background: #fff;
+  background: #FFFFFF;
   border-radius: 20px;
   padding: 35px 25px;
   width: 280px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
   position: relative;
 }
 
 .plano-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 .plano-card h3 {
@@ -40,10 +40,15 @@
 }
 
 .price {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #4f46e5;
-  margin: 20px 0;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #BF121F;
+  margin: 25px 0;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }
 
 .plano-card ul {
@@ -54,20 +59,20 @@
 
 .plano-card li {
   margin-bottom: 15px;
-  color: #4b5563;
+  color: #4B5563;
   font-size: 1rem;
 }
 
 .plano-card li::before {
   content: "✔";
-  color: #4f46e5;
+  color: #BF121F;
   font-weight: bold;
   margin-right: 10px;
 }
 
 .destaque {
-  border: 2px solid #4f46e5;
-  transform: scale(1.05);
+  border: 2px solid #BF121F;
+  transform: translateY(-15px) scale(1.05);
 }
 
 .destaque::before {
@@ -76,16 +81,17 @@
   top: -15px;
   left: 50%;
   transform: translateX(-50%);
-  background: #4f46e5;
+  background: #BF121F;
   color: white;
-  padding: 6px 18px;
-  border-radius: 20px;
+  padding: 8px 20px;
+  border-radius: 999px;
   font-size: 0.8rem;
-  font-weight: bold;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(191, 18, 31, 0.3);
 }
 
 button {
-  background: linear-gradient(90deg, #4f46e5, #6366f1);
+  background: #BF121F;
   color: white;
   border: none;
   padding: 14px;
@@ -94,12 +100,13 @@ button {
   border-radius: 12px;
   font-size: 1rem;
   font-weight: 600;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
 
 button:hover {
-  transform: scale(1.03);
-  background: linear-gradient(90deg, #4338ca, #4f46e5);
+  background: #9C0F1A;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(191, 18, 31, 0.25);
 }
 
 /* Celulares */
@@ -114,7 +121,7 @@ button:hover {
   }
 
   .plano-card {
-    width: 100%;
+    width: min(100%, 350px);
     padding: 30px 20px;
   }
 
@@ -123,7 +130,7 @@ button:hover {
   }
 
   .price {
-    font-size: 2rem;
+    font-size: 2.3rem;
   }
 
   .plano-card li {
@@ -133,6 +140,10 @@ button:hover {
   button {
     padding: 12px;
     font-size: 0.95rem;
+  }
+
+  .destaque {
+    transform: none;
   }
 
   .destaque::before {
