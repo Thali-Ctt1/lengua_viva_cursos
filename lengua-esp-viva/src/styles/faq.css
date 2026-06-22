@@ -10,6 +10,16 @@
   margin: 0 auto;
 }
 
+.section-badge {
+  display: block;
+  text-align: center;
+  color: #BF121F;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
 .faq h2 {
   text-align: center;
 

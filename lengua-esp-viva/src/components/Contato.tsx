@@ -52,6 +52,9 @@ export function Contato() {
   return (
     <section className="contato" id="contato">
       <div className="container">
+        <span className="section-badge">
+          Contato
+        </span>
         <h2>Entre em Contato</h2>
 
         <form onSubmit={handleSubmit}>
