@@ -8,8 +8,6 @@ export default function Hero() {
 
       <div className="hero__container">
 
-        {/* Conteúdo do Hero */}
-
         <div className="hero__content">
 
           <span className="hero__badge">
@@ -44,8 +42,6 @@ export default function Hero() {
           </div>
 
         </div>
-
-        {/* Imagem do Hero */}
 
         <div className="hero__image-wrapper">
 
